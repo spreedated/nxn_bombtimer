@@ -4,7 +4,7 @@ Module mod_csgsi
     'Animation on statusstrip
     Private a As New mod_animation.workingAnimation
 
-    Public Function startCSGSI() As Boolean
+    Public Function StartCSGSI() As Boolean
         set_gamevariables()
         Try
             AddHandler listener.NewGameState, AddressOf OnNewGameState
@@ -23,7 +23,7 @@ Module mod_csgsi
         Return True
     End Function
 
-    Public Function stopCSGSI() As Boolean
+    Public Function StopCSGSI() As Boolean
         'Animation on statusstrip
         a.animationString(False)
         a.PictureBoxAnimation(False)
@@ -43,16 +43,16 @@ Module mod_csgsi
             Return False
         End If
     End Function
-    Public Function restartCSGSI() As Boolean
-        If stopCSGSI() = True Then
+    Public Function RestartCSGSI() As Boolean
+        If StopCSGSI() = True Then
             Threading.Thread.Sleep(500)
             Debug.Print("Restarting listener...")
-            startCSGSI()
+            StartCSGSI()
             Return True
         Else
             Threading.Thread.Sleep(500)
             Debug.Print("Listener not started yet, starting listener...")
-            startCSGSI()
+            StartCSGSI()
             Return False
         End If
     End Function
@@ -90,7 +90,7 @@ Module mod_csgsi
 
     End Sub
 
-    Private Sub set_gamevariables()
+    Private Sub Set_gamevariables()
         If frm_main.chk_comp.Checked Then
             c4time = 40
         Else
@@ -113,23 +113,23 @@ Module mod_csgsi
 #End Region
 
 #Region "BombTimer"
-    Private WithEvents bombTimer As New Timer
-    Public WithEvents myBombtime As New on_bombtime_change
+    Private WithEvents BombTimer As New Timer
+    Public WithEvents MyBombtime As New on_bombtime_change
     Private initialbombtime As Integer = c4time
-    Public Sub bombTimer_tick() Handles bombTimer.Tick
+    Public Sub BombTimer_tick() Handles BombTimer.Tick
         mod_overlay.frm_overlay.Show()
 
         Debug.Print("Bombtimer ticks...")
 
-        myBombtime.bombtime = initialbombtime - 1
+        MyBombtime.bombtime = initialbombtime - 1
         initialbombtime -= 1
         If initialbombtime <= 0 Then
             isplanted = False
         End If
     End Sub
-    Private Sub on_bombtime_change() Handles myBombtime.bombtime_changed
+    Private Sub On_bombtime_change() Handles MyBombtime.bombtime_changed
         Dim lbl As Label = frm_overlay.Controls.Item(frm_overlay.Controls.IndexOfKey("lbl_time"))
-        Dim bombtime As Integer = myBombtime.bombtime
+        Dim bombtime As Integer = MyBombtime.bombtime
         lbl.Text = bombtime
 
         'Sound
@@ -147,11 +147,11 @@ Module mod_csgsi
 
 #Region "WatchDog"
     Private isplanted As Boolean = False
-    Public WithEvents watchDog As New Timer
-    Private Sub watchDog_tick() Handles watchDog.Tick
+    Public WithEvents WatchDog As New Timer
+    Private Sub WatchDog_tick() Handles WatchDog.Tick
         If isplanted = True Then
-            If bombTimer.Enabled = False Then
-                With bombTimer
+            If BombTimer.Enabled = False Then
+                With BombTimer
                     .Enabled = True
                     .Interval = 1000
                     .Start()
@@ -161,13 +161,13 @@ Module mod_csgsi
         End If
 
         If isplanted = False Then
-            With bombTimer
+            With BombTimer
                 .Enabled = False
                 .Stop()
             End With
             initialbombtime = c4time
             mod_overlay.frm_overlay.Hide()
-            bombTimer.Stop()
+            BombTimer.Stop()
         End If
     End Sub
 #End Region
