@@ -1,11 +1,11 @@
 ﻿Imports CSGSI
-Module mod_csgsi
+Module Mod_Csgsi
     Public listener As GameStateListener = New GameStateListener(3000)
     'Animation on statusstrip
-    Private a As New mod_animation.workingAnimation
+    Private a As New Mod_Animation.WorkingAnimation
 
     Public Function StartCSGSI() As Boolean
-        set_gamevariables()
+        Set_gamevariables()
         Try
             AddHandler listener.NewGameState, AddressOf OnNewGameState
             listener.Start()
@@ -16,18 +16,18 @@ Module mod_csgsi
 
         Debug.Print("Active...")
         'Animation on statusstrip
-        a.animationString(True, frm_main.ToolStripStatusLabel2,, "Active...")
+        a.AnimationString(True, Frm_Main.ToolStripStatusLabel2,, "Active...")
         a.PictureBoxAnimation(True)
-        frm_main.ToolStripProgressBar1.Style = ProgressBarStyle.Marquee
+        Frm_Main.ToolStripProgressBar1.Style = ProgressBarStyle.Marquee
         '# ###
         Return True
     End Function
 
     Public Function StopCSGSI() As Boolean
         'Animation on statusstrip
-        a.animationString(False)
+        a.AnimationString(False)
         a.PictureBoxAnimation(False)
-        frm_main.ToolStripProgressBar1.Style = ProgressBarStyle.Blocks
+        Frm_Main.ToolStripProgressBar1.Style = ProgressBarStyle.Blocks
         '# ###
 
         If listener.Running = True Then
@@ -91,13 +91,13 @@ Module mod_csgsi
     End Sub
 
     Private Sub Set_gamevariables()
-        If frm_main.chk_comp.Checked Then
+        If Frm_Main.chk_comp.Checked Then
             c4time = 40
         Else
-            c4time = frm_main.NumericUpDown1.Value
+            c4time = Frm_Main.NumericUpDown1.Value
         End If
 
-        teh_announcer = frm_main.ComboBox1.SelectedIndex
+        teh_announcer = Frm_Main.ComboBox1.SelectedIndex
 
     End Sub
 #Region "Game Variables"
@@ -117,7 +117,7 @@ Module mod_csgsi
     Public WithEvents MyBombtime As New on_bombtime_change
     Private initialbombtime As Integer = c4time
     Public Sub BombTimer_tick() Handles BombTimer.Tick
-        mod_overlay.frm_overlay.Show()
+        Mod_Overlay.Frm_Overlay.Show()
 
         Debug.Print("Bombtimer ticks...")
 
@@ -128,7 +128,7 @@ Module mod_csgsi
         End If
     End Sub
     Private Sub On_bombtime_change() Handles MyBombtime.bombtime_changed
-        Dim lbl As Label = frm_overlay.Controls.Item(frm_overlay.Controls.IndexOfKey("lbl_time"))
+        Dim lbl As Label = Frm_Overlay.Controls.Item(Frm_Overlay.Controls.IndexOfKey("lbl_time"))
         Dim bombtime As Integer = MyBombtime.bombtime
         lbl.Text = bombtime
 
@@ -166,7 +166,7 @@ Module mod_csgsi
                 .Stop()
             End With
             initialbombtime = c4time
-            mod_overlay.frm_overlay.Hide()
+            Mod_Overlay.Frm_Overlay.Hide()
             BombTimer.Stop()
         End If
     End Sub

@@ -1,4 +1,4 @@
-﻿Module mod_bombtime
+﻿Module Mod_Bombtime
     Public Class on_bombtime_change
         Private bombtime_value As Integer = 0
         Public Event bombtime_changed(ByVal bombtime_value As Integer)
@@ -14,10 +14,10 @@
 
 
         Private bombplanted_value As Boolean = False
-        Public Event bombplanted_changed(ByVal bombplanted_value As Boolean)
-        Public Property bombplanted() As Boolean
+        Public Event Bombplanted_changed(ByVal bombplanted_value As Boolean)
+        Public Property Bombplanted() As Boolean
             Get
-                bombplanted = bombplanted_value
+                Bombplanted = bombplanted_value
             End Get
             Set(ByVal value As Boolean)
                 bombplanted_value = value

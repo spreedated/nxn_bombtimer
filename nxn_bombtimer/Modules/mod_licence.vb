@@ -1,5 +1,5 @@
 ﻿Imports System.Net
-Module mod_licence
+Module Mod_Licence
     Public ReadOnly Property is_licensed As Boolean
         Get
             Return is_licensed0
@@ -21,31 +21,31 @@ Module mod_licence
         Return checkConnection
     End Function
     Public Sub check_licence_on_startup()
-        Dim d = frm_main.Label3
+        Dim d = Frm_Main.Label3
 
         'Connection
-        frm_main.Label3.Text = "Checking connection..."
+        Frm_Main.Label3.Text = "Checking connection..."
         If Not checkConnection() Then
             MsgBox("Licence Server not reachable!" & vbCrLf & "Check Firewall settings and internet connection." & vbCrLf & "Running in trial mode.", MsgBoxStyle.Critical, application_name)
             d.Text = "TRIAL VERSION" & vbCrLf & vbCrLf
             d.ForeColor = Color.Red
             d.Font = New Font("Arial", 9, FontStyle.Bold)
             is_licensed0 = False
-            frm_main.Button5.Enabled = False
+            Frm_Main.Btn_RemoveLicence.Enabled = False
             Exit Sub
         End If
         '# ###
 
 
-        frm_main.Label3.Text = "Checking licence...."
+        Frm_Main.Label3.Text = "Checking licence...."
         If My.Settings.licence.Length <= 0 Then
             d.Text = "TRIAL VERSION" & vbCrLf & vbCrLf
             d.ForeColor = Color.Red
             d.Font = New Font("Arial", 9, FontStyle.Bold)
             is_licensed0 = False
-            frm_main.Button5.Enabled = False
+            Frm_Main.Btn_RemoveLicence.Enabled = False
         Else
-            Dim i As New mod_licence
+            Dim i As New Mod_licence
             With i
                 .licence_key = My.Settings.licence
                 .Start()
@@ -54,13 +54,13 @@ Module mod_licence
             If i.is_valid Then
                 is_licensed0 = True
                 Dim acc() As String = My.Settings.licence.Split("-")
-                frm_main.TextBox1.Text = acc(0)
-                frm_main.TextBox2.Text = acc(1)
-                frm_main.TextBox3.Text = acc(2)
-                frm_main.Button1.Enabled = False
-                frm_main.Button6.Enabled = False
-                frm_main.Button4.Enabled = False
-                frm_main.Button5.Enabled = True
+                Frm_Main.TextBox1.Text = acc(0)
+                Frm_Main.TextBox2.Text = acc(1)
+                Frm_Main.TextBox3.Text = acc(2)
+                Frm_Main.Btn_Register.Enabled = False
+                Frm_Main.Btn_ClearFields.Enabled = False
+                Frm_Main.Btn_Paste.Enabled = False
+                Frm_Main.Btn_RemoveLicence.Enabled = True
                 d.Text = String.Format("Thanks for purchase!" & vbCrLf & vbCrLf &
                     "Licensed to: {0}" & vbCrLf &
                     "Valid till: {1}" & vbCrLf, i.licensed_to, i.valid_until)
@@ -75,10 +75,10 @@ Module mod_licence
                     is_licensed0 = False
                     My.Settings.licence = Nothing
                     My.Settings.Save()
-                    frm_main.Button5.Enabled = False
-                    frm_main.Button1.Enabled = True
-                    frm_main.Button6.Enabled = True
-                    frm_main.Button4.Enabled = True
+                    Frm_Main.Btn_RemoveLicence.Enabled = False
+                    Frm_Main.Btn_Register.Enabled = True
+                    Frm_Main.Btn_ClearFields.Enabled = True
+                    Frm_Main.Btn_Paste.Enabled = True
                 ElseIf i.is_expired = True Then
                     d.Text = "TRIAL VERSION" & vbCrLf & vbCrLf &
                         "LICENCE EXPIRED" & vbCrLf &
@@ -87,23 +87,24 @@ Module mod_licence
                     d.Font = New Font("Arial", 9, FontStyle.Bold)
                     is_licensed0 = False
                     Dim acc() As String = My.Settings.licence.Split("-")
-                    frm_main.TextBox1.Text = acc(0)
-                    frm_main.TextBox2.Text = acc(1)
-                    frm_main.TextBox3.Text = acc(2)
-                    frm_main.Button5.Enabled = True
-                    frm_main.Button1.Enabled = True
-                    frm_main.Button6.Enabled = True
-                    frm_main.Button4.Enabled = True
+                    Frm_Main.TextBox1.Text = acc(0)
+                    Frm_Main.TextBox2.Text = acc(1)
+                    Frm_Main.TextBox3.Text = acc(2)
+                    Frm_Main.Btn_RemoveLicence.Enabled = True
+                    Frm_Main.Btn_Register.Enabled = True
+                    Frm_Main.Btn_ClearFields.Enabled = True
+                    Frm_Main.Btn_Paste.Enabled = True
                 End If
 
             End If
         End If
     End Sub
-    Public Class mod_licence
-        Private licence_url As String = "http://nexn.systems/licence/nxn_bombtimer/"
+
+    Public Class Mod_Licence
+        Private ReadOnly licence_url As String = "http://nexn.systems/licence/nxn_bombtimer/"
 
         Private conn As New WebClient
-        Private WithEvents bg0 As New System.ComponentModel.BackgroundWorker
+        Private WithEvents Bg0 As New System.ComponentModel.BackgroundWorker
         Private owner As String = Nothing
         Private activatedOn As DateTime = Nothing
         Private validUntil As DateTime = Nothing
@@ -144,9 +145,9 @@ Module mod_licence
             End Get
         End Property
         Public Sub Start()
-            bg0_dowork()
+            Bg0_dowork()
         End Sub
-        Private Sub bg0_dowork() Handles bg0.DoWork
+        Private Sub Bg0_dowork() Handles Bg0.DoWork
             Try
                 Dim returnString() As String = conn.DownloadString(New System.Uri(licence_url & licence & ".nxn")).Split(vbCrLf)
                 owner = returnString(0)

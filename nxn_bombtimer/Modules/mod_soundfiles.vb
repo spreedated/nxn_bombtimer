@@ -1,7 +1,7 @@
 ﻿Imports Ionic
 Imports Ionic.Zip
-Module mod_soundfiles
-    Public Sub zipFile(ByVal path As String, ByVal file As String)
+Module Mod_Soundfiles
+    Public Sub ZipFile(ByVal path As String, ByVal file As String)
         Dim b As New Ionic.Zip.ZipFile
         With b
             .Encryption = EncryptionAlgorithm.WinZipAes256
@@ -16,7 +16,7 @@ Module mod_soundfiles
 
     End Sub
 
-    Public Sub unzipFile()
+    Public Sub UnzipFile()
         Using zip As New ZipFile("C:\Users\SpReeD\Documents\Visual Studio 2017\Projects\nxn_bombtimer\resources\ut99\ut99.nxn")
             Dim e As ZipEntry
             For Each e In zip

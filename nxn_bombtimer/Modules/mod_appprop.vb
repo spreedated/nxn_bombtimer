@@ -1,9 +1,9 @@
-﻿Module mod_appprop
-    Private version As String = "131"
+﻿Module Mod_Appprop
+    Private version As String = "140"
     Private ReadOnly name As String = "CS:GO C4.Timer"
 
 
-    Public application_name As String = name & " " & get_versionstring()
+    Public application_name As String = name & " " & Get_versionstring()
 
     Private Function Get_versionstring() As String
         Get_versionstring = Nothing

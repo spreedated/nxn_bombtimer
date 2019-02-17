@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.nxn_bombtimer.frm_main
+            Me.MainForm = Global.nxn_bombtimer.Frm_Main
         End Sub
     End Class
 End Namespace

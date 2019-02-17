@@ -1,11 +1,11 @@
 ﻿Imports System.ComponentModel
 
-Public Class frm_main
+Public Class Frm_Main
     Private normal_window_size As New Size(431, 269)
     Private option_window_size As New Size(431, 635)
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With Me
-            .Text = mod_appprop.application_name
+            .Text = Mod_Appprop.application_name
             .FormBorderStyle = FormBorderStyle.FixedSingle
             .ShowIcon = True
             .ShowInTaskbar = True
@@ -14,22 +14,22 @@ Public Class frm_main
             .Icon = My.Resources.c4_icon_black
         End With
         ComboBox1.SelectedIndex = 1
-        mod_licence.check_licence_on_startup()
+        Mod_Licence.check_licence_on_startup()
     End Sub
 
-    Private Sub btn_start_Click(sender As Object, e As EventArgs) Handles btn_start.Click
+    Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
         If sender.text.ToString.ToLower.Contains("rock") Then
-            st_myState(True)
+            St_myState(True)
         Else
-            st_myState(False)
+            St_myState(False)
         End If
     End Sub
 
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        mod_csgsi.stopCSGSI()
+        Mod_Csgsi.StopCSGSI()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Btn_Options.Click
         If sender.text.ToString.ToLower.Contains("»") Then
             Me.Size = option_window_size
             '# LICENCE
@@ -50,32 +50,32 @@ Public Class frm_main
         End If
     End Sub
 #Region "Stylez"
-    Private Sub st_myState(ByVal state As Boolean)
+    Private Sub St_myState(ByVal state As Boolean)
         If state Then
             GroupBox1.Visible = False
             Me.Size = normal_window_size
-            Button2.Enabled = False
-            Button3.Enabled = False
-            btn_start.Text = "&Stop"
-            Button2.Text = "&Options »"
+            Btn_Options.Enabled = False
+            Btn_Licence.Enabled = False
+            Btn_Start.Text = "&Stop"
+            Btn_Options.Text = "&Options »"
             Debug.Print(listener.Running.ToString)
-            mod_csgsi.startCSGSI()
+            Mod_Csgsi.StartCSGSI()
             Debug.Print(listener.Running.ToString)
-            mod_csgsi.watchDog.Interval = 50
-            mod_csgsi.watchDog.Start()
+            Mod_Csgsi.WatchDog.Interval = 50
+            Mod_Csgsi.WatchDog.Start()
         Else
-            Button2.Enabled = True
-            Button3.Enabled = True
-            btn_start.Text = "&Rock 'n' Roll"
-            mod_csgsi.stopCSGSI()
+            Btn_Options.Enabled = True
+            Btn_Licence.Enabled = True
+            Btn_Start.Text = "&Rock 'n' Roll"
+            Mod_Csgsi.StopCSGSI()
             ToolStripStatusLabel2.Text = "[+] Ready"
-            mod_csgsi.watchDog.Stop()
+            Mod_Csgsi.WatchDog.Stop()
         End If
     End Sub
 #End Region
 
 #Region "Options - Timer"
-    Private Sub chk_custom_CheckedChanged(sender As Object, e As EventArgs) Handles chk_custom.CheckedChanged
+    Private Sub Chk_custom_CheckedChanged(sender As Object, e As EventArgs) Handles Chk_custom.CheckedChanged
         If sender.checked Then
             NumericUpDown1.Enabled = True
         Else
@@ -85,18 +85,18 @@ Public Class frm_main
 #End Region
 
 #Region "Licence GroupBox"
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Btn_Register.Click
         If TextBox1.Text.Length = 6 And TextBox2.Text.Length = 9 And TextBox3.Text.Length = 6 And TextBox3.Text.ToLower.StartsWith("nxn") = True Then
             My.Settings.licence = TextBox1.Text & "-" & TextBox2.Text & "-" & TextBox3.Text
             My.Settings.Save()
             check_licence_on_startup()
-            Button2.PerformClick()
+            Btn_Options.PerformClick()
         Else
             MsgBox("Licence not valid", MsgBoxStyle.Information, application_name)
         End If
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Btn_Paste.Click
         Try
             Dim i = My.Computer.Clipboard.GetText
             If i.Length = 23 And i.ToLower.Contains("-nxn") Then
@@ -110,7 +110,7 @@ Public Class frm_main
         End Try
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Btn_RemoveLicence.Click
         Dim i As MsgBoxResult = MsgBox("Delete licence and reset to TRIAL MODE?", MsgBoxStyle.OkCancel, application_name)
 
         If i = MsgBoxResult.Ok Then
@@ -118,14 +118,14 @@ Public Class frm_main
             If d = MsgBoxResult.Yes Then
                 My.Settings.licence = ""
                 My.Settings.Save()
-                mod_licence.check_licence_on_startup()
+                Mod_Licence.check_licence_on_startup()
                 TextBox1.Clear()
                 TextBox2.Clear()
                 TextBox3.Clear()
-                Button5.Enabled = False
-                Button1.Enabled = True
-                Button6.Enabled = True
-                Button4.Enabled = True
+                Btn_RemoveLicence.Enabled = False
+                Btn_Register.Enabled = True
+                Btn_ClearFields.Enabled = True
+                Btn_Paste.Enabled = True
             Else
                 MsgBox("Nothing changed", MsgBoxStyle.Information, application_name)
             End If
@@ -146,7 +146,7 @@ Public Class frm_main
         End If
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Btn_ClearFields.Click
         Dim textBoxes As Array = {TextBox1, TextBox2, TextBox3}
         For Each tBox As TextBox In textBoxes
             tBox.Clear()
@@ -156,7 +156,7 @@ Public Class frm_main
 
 #Region "Auto-Listen"
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        With watchCS
+        With WatchCS
             .Interval = 1000
             If sender.checked = True Then
                 .Enabled = True
@@ -168,8 +168,8 @@ Public Class frm_main
         End With
     End Sub
 
-    Private WithEvents watchCS As New Timer
-    Private Sub watchCS_Tick() Handles watchCS.Tick
+    Private WithEvents WatchCS As New Timer
+    Private Sub WatchCS_Tick() Handles WatchCS.Tick
         Dim i As Process() = Process.GetProcessesByName("csgo")
         Dim procArray As New ArrayList
 
@@ -180,14 +180,14 @@ Public Class frm_main
         If procArray.Count >= 1 Then
             For Each item In procArray
                 If item.ToString.ToLower.Contains("csgo") Then
-                    If btn_start.Text.Contains("'n'") Then
-                        btn_start.PerformClick()
+                    If Btn_Start.Text.Contains("'n'") Then
+                        Btn_Start.PerformClick()
                     End If
                 End If
             Next
         Else
-            If btn_start.Text.Contains("top") Then
-                btn_start.PerformClick()
+            If Btn_Start.Text.Contains("top") Then
+                Btn_Start.PerformClick()
             End If
         End If
     End Sub

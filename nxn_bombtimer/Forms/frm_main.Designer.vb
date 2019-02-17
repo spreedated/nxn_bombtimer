@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frm_main
+Partial Class Frm_Main
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,9 +22,9 @@ Partial Class frm_main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btn_start = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Btn_Start = New System.Windows.Forms.Button()
+        Me.Btn_Options = New System.Windows.Forms.Button()
+        Me.Btn_Licence = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
@@ -37,19 +37,19 @@ Partial Class frm_main
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.chk_custom = New System.Windows.Forms.RadioButton()
+        Me.Chk_custom = New System.Windows.Forms.RadioButton()
         Me.chk_comp = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Btn_ClearFields = New System.Windows.Forms.Button()
+        Me.Btn_RemoveLicence = New System.Windows.Forms.Button()
+        Me.Btn_Paste = New System.Windows.Forms.Button()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Btn_Register = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -59,34 +59,34 @@ Partial Class frm_main
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
-        'btn_start
+        'Btn_Start
         '
-        Me.btn_start.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_start.Location = New System.Drawing.Point(248, 12)
-        Me.btn_start.Name = "btn_start"
-        Me.btn_start.Size = New System.Drawing.Size(123, 29)
-        Me.btn_start.TabIndex = 0
-        Me.btn_start.Text = "&Rock 'n' Roll"
-        Me.btn_start.UseVisualStyleBackColor = True
+        Me.Btn_Start.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Start.Location = New System.Drawing.Point(248, 12)
+        Me.Btn_Start.Name = "Btn_Start"
+        Me.Btn_Start.Size = New System.Drawing.Size(123, 29)
+        Me.Btn_Start.TabIndex = 0
+        Me.Btn_Start.Text = "&Rock 'n' Roll"
+        Me.Btn_Start.UseVisualStyleBackColor = True
         '
-        'Button2
+        'Btn_Options
         '
-        Me.Button2.Location = New System.Drawing.Point(248, 131)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(123, 31)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "&Options »"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Btn_Options.Location = New System.Drawing.Point(248, 131)
+        Me.Btn_Options.Name = "Btn_Options"
+        Me.Btn_Options.Size = New System.Drawing.Size(123, 31)
+        Me.Btn_Options.TabIndex = 1
+        Me.Btn_Options.Text = "&Options »"
+        Me.Btn_Options.UseVisualStyleBackColor = True
         '
-        'Button3
+        'Btn_Licence
         '
-        Me.Button3.Location = New System.Drawing.Point(248, 168)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(123, 31)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "&Licence"
-        Me.Button3.UseVisualStyleBackColor = True
-        Me.Button3.Visible = False
+        Me.Btn_Licence.Location = New System.Drawing.Point(248, 168)
+        Me.Btn_Licence.Name = "Btn_Licence"
+        Me.Btn_Licence.Size = New System.Drawing.Size(123, 31)
+        Me.Btn_Licence.TabIndex = 2
+        Me.Btn_Licence.Text = "&Licence"
+        Me.Btn_Licence.UseVisualStyleBackColor = True
+        Me.Btn_Licence.Visible = False
         '
         'PictureBox1
         '
@@ -174,7 +174,7 @@ Partial Class frm_main
         '
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.NumericUpDown1)
-        Me.GroupBox2.Controls.Add(Me.chk_custom)
+        Me.GroupBox2.Controls.Add(Me.Chk_custom)
         Me.GroupBox2.Controls.Add(Me.chk_comp)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 19)
         Me.GroupBox2.Name = "GroupBox2"
@@ -204,15 +204,15 @@ Partial Class frm_main
         Me.NumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.NumericUpDown1.Value = New Decimal(New Integer() {35, 0, 0, 0})
         '
-        'chk_custom
+        'Chk_custom
         '
-        Me.chk_custom.AutoSize = True
-        Me.chk_custom.Location = New System.Drawing.Point(6, 42)
-        Me.chk_custom.Name = "chk_custom"
-        Me.chk_custom.Size = New System.Drawing.Size(60, 17)
-        Me.chk_custom.TabIndex = 3
-        Me.chk_custom.Text = "Custom"
-        Me.chk_custom.UseVisualStyleBackColor = True
+        Me.Chk_custom.AutoSize = True
+        Me.Chk_custom.Location = New System.Drawing.Point(6, 42)
+        Me.Chk_custom.Name = "Chk_custom"
+        Me.Chk_custom.Size = New System.Drawing.Size(60, 17)
+        Me.Chk_custom.TabIndex = 3
+        Me.Chk_custom.Text = "Custom"
+        Me.Chk_custom.UseVisualStyleBackColor = True
         '
         'chk_comp
         '
@@ -237,15 +237,15 @@ Partial Class frm_main
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Button6)
-        Me.GroupBox3.Controls.Add(Me.Button5)
-        Me.GroupBox3.Controls.Add(Me.Button4)
+        Me.GroupBox3.Controls.Add(Me.Btn_ClearFields)
+        Me.GroupBox3.Controls.Add(Me.Btn_RemoveLicence)
+        Me.GroupBox3.Controls.Add(Me.Btn_Paste)
         Me.GroupBox3.Controls.Add(Me.TextBox3)
         Me.GroupBox3.Controls.Add(Me.Label6)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.TextBox2)
         Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.Btn_Register)
         Me.GroupBox3.Location = New System.Drawing.Point(12, 484)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(391, 76)
@@ -253,32 +253,32 @@ Partial Class frm_main
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Register Licence"
         '
-        'Button6
+        'Btn_ClearFields
         '
-        Me.Button6.Location = New System.Drawing.Point(62, 47)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(76, 21)
-        Me.Button6.TabIndex = 13
-        Me.Button6.Text = "Clear fields"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Btn_ClearFields.Location = New System.Drawing.Point(62, 47)
+        Me.Btn_ClearFields.Name = "Btn_ClearFields"
+        Me.Btn_ClearFields.Size = New System.Drawing.Size(76, 21)
+        Me.Btn_ClearFields.TabIndex = 13
+        Me.Btn_ClearFields.Text = "Clear fields"
+        Me.Btn_ClearFields.UseVisualStyleBackColor = True
         '
-        'Button5
+        'Btn_RemoveLicence
         '
-        Me.Button5.Location = New System.Drawing.Point(188, 47)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(97, 21)
-        Me.Button5.TabIndex = 12
-        Me.Button5.Text = "Remove licence"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Btn_RemoveLicence.Location = New System.Drawing.Point(188, 47)
+        Me.Btn_RemoveLicence.Name = "Btn_RemoveLicence"
+        Me.Btn_RemoveLicence.Size = New System.Drawing.Size(97, 21)
+        Me.Btn_RemoveLicence.TabIndex = 12
+        Me.Btn_RemoveLicence.Text = "Remove licence"
+        Me.Btn_RemoveLicence.UseVisualStyleBackColor = True
         '
-        'Button4
+        'Btn_Paste
         '
-        Me.Button4.Location = New System.Drawing.Point(6, 47)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(50, 21)
-        Me.Button4.TabIndex = 11
-        Me.Button4.Text = "&Paste"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Btn_Paste.Location = New System.Drawing.Point(6, 47)
+        Me.Btn_Paste.Name = "Btn_Paste"
+        Me.Btn_Paste.Size = New System.Drawing.Size(50, 21)
+        Me.Btn_Paste.TabIndex = 11
+        Me.Btn_Paste.Text = "&Paste"
+        Me.Btn_Paste.UseVisualStyleBackColor = True
         '
         'TextBox3
         '
@@ -325,15 +325,15 @@ Partial Class frm_main
         Me.TextBox1.Size = New System.Drawing.Size(50, 22)
         Me.TextBox1.TabIndex = 7
         '
-        'Button1
+        'Btn_Register
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(291, 47)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(81, 21)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "&Register"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Btn_Register.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Register.Location = New System.Drawing.Point(291, 47)
+        Me.Btn_Register.Name = "Btn_Register"
+        Me.Btn_Register.Size = New System.Drawing.Size(81, 21)
+        Me.Btn_Register.TabIndex = 10
+        Me.Btn_Register.Text = "&Register"
+        Me.Btn_Register.UseVisualStyleBackColor = True
         '
         'Label4
         '
@@ -345,7 +345,7 @@ Partial Class frm_main
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Label4.Visible = False
         '
-        'frm_main
+        'Frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -355,11 +355,11 @@ Partial Class frm_main
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.btn_start)
+        Me.Controls.Add(Me.Btn_Licence)
+        Me.Controls.Add(Me.Btn_Options)
+        Me.Controls.Add(Me.Btn_Start)
         Me.Controls.Add(Me.Label4)
-        Me.Name = "frm_main"
+        Me.Name = "Frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_main"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -377,9 +377,9 @@ Partial Class frm_main
 
     End Sub
 
-    Friend WithEvents btn_start As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents Btn_Start As Button
+    Friend WithEvents Btn_Options As Button
+    Friend WithEvents Btn_Licence As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
@@ -389,21 +389,21 @@ Partial Class frm_main
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents NumericUpDown1 As NumericUpDown
-    Friend WithEvents chk_custom As RadioButton
+    Friend WithEvents Chk_custom As RadioButton
     Friend WithEvents chk_comp As RadioButton
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Btn_Register As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
+    Friend WithEvents Btn_Paste As Button
+    Friend WithEvents Btn_RemoveLicence As Button
     Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Button6 As Button
+    Friend WithEvents Btn_ClearFields As Button
 End Class

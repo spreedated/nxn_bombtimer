@@ -1,6 +1,6 @@
-﻿Module mod_overlay
-    Private WithEvents lbl_time As New Label
-    Public WithEvents frm_overlay As New Form
+﻿Module Mod_Overlay
+    Private WithEvents Lbl_Time As New Label
+    Public WithEvents Frm_Overlay As New Form
 
 
     Private scr_x As Integer = My.Computer.Screen.Bounds.Width
@@ -9,7 +9,7 @@
     Private mousex As Integer
     Private mousey As Integer
 
-    Private Sub frm_overlay_load() Handles frm_overlay.Load
+    Private Sub Frm_Overlay_load() Handles frm_overlay.Load
         dropFont()
 
         With frm_overlay
@@ -46,19 +46,20 @@
 
         frm_overlay.Controls.Add(lbl_time)
     End Sub
+
 #Region "Drag Window with Mouse"
-    Private Sub frm_overlay_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles frm_overlay.MouseDown, lbl_time.MouseDown
+    Private Sub Frm_Overlay_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Frm_Overlay.MouseDown, Lbl_Time.MouseDown
         drag = True
-        mousex = Windows.Forms.Cursor.Position.X - frm_overlay.Left
-        mousey = Windows.Forms.Cursor.Position.Y - frm_overlay.Top
+        mousex = Windows.Forms.Cursor.Position.X - Frm_Overlay.Left
+        mousey = Windows.Forms.Cursor.Position.Y - Frm_Overlay.Top
     End Sub
-    Private Sub frm_overlay_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles frm_overlay.MouseMove, lbl_time.MouseMove
+    Private Sub Frm_Overlay_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Frm_Overlay.MouseMove, Lbl_Time.MouseMove
         If drag Then
-            frm_overlay.Top = Windows.Forms.Cursor.Position.Y - mousey
-            frm_overlay.Left = Windows.Forms.Cursor.Position.X - mousex
+            Frm_Overlay.Top = Windows.Forms.Cursor.Position.Y - mousey
+            Frm_Overlay.Left = Windows.Forms.Cursor.Position.X - mousex
         End If
     End Sub
-    Private Sub frm_overlay_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles frm_overlay.MouseUp, lbl_time.MouseUp
+    Private Sub Frm_Overlay_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Frm_Overlay.MouseUp, Lbl_Time.MouseUp
         drag = False
     End Sub
 #End Region
@@ -66,7 +67,7 @@
 #Region "Drop CS Regular Font to System"
     Public pfc As New System.Drawing.Text.PrivateFontCollection()
     Public use_custom_font As Boolean = False
-    Public Sub dropFont()
+    Public Sub DropFont()
         Try
             'Drop TTF to tmp
             If Not My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.Temp & "\nxn_bombtimer.ttf") Then
