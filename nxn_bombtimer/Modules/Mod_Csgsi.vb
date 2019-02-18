@@ -32,6 +32,7 @@ Module Mod_Csgsi
 
         If listener.Running = True Then
             Try
+                RemoveHandler listener.NewGameState, AddressOf OnNewGameState
                 listener.Stop()
             Catch ex As Exception
 
@@ -107,7 +108,7 @@ Module Mod_Csgsi
     Public WithEvents MyBombtime As New on_bombtime_change
     Private initialbombtime As Integer = c4time
     Public Sub BombTimer_tick() Handles BombTimer.Tick
-        Mod_Overlay.Frm_Overlay.Show()
+        Frm_Overlay.Show()
 
         Debug.Print("Bombtimer ticks...")
 
@@ -156,7 +157,7 @@ Module Mod_Csgsi
                 .Stop()
             End With
             initialbombtime = c4time
-            Mod_Overlay.Frm_Overlay.Hide()
+            Frm_Overlay.Hide()
             BombTimer.Stop()
         End If
     End Sub

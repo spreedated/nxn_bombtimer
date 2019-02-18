@@ -98,11 +98,18 @@
       <DependentUpon>Frm_Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Frm_Overlay.Designer.vb">
+      <DependentUpon>Frm_Overlay.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Overlay.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\Mod_Animation.vb" />
     <Compile Include="Modules\Mod_AppProperties.vb" />
     <Compile Include="Modules\Mod_Bombtime.vb" />
     <Compile Include="Modules\Mod_Csgsi.vb" />
-    <Compile Include="Modules\Mod_Overlay.vb" />
+    <Compile Include="Modules\Mod_CustomFont.vb" />
+    <Compile Include="Modules\Mod_Main.vb" />
     <Compile Include="Modules\Mod_Sound.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -124,6 +131,9 @@
     <EmbeddedResource Include="Forms\Frm_Main.resx">
       <DependentUpon>Frm_Main.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Overlay.resx">
+      <DependentUpon>Frm_Overlay.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
