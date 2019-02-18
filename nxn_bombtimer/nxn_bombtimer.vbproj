@@ -106,7 +106,6 @@
     </Compile>
     <Compile Include="Modules\Mod_Animation.vb" />
     <Compile Include="Modules\Mod_AppProperties.vb" />
-    <Compile Include="Modules\Mod_Bombtime.vb" />
     <Compile Include="Modules\Mod_Csgsi.vb" />
     <Compile Include="Modules\Mod_CustomFont.vb" />
     <Compile Include="Modules\Mod_Main.vb" />
@@ -194,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="c4_icon_black.ico" />
+    <None Include="Resources\heartbeat.mp3" />
     <None Include="Resources\bomb_full.png" />
     <None Include="Resources\bomb_empty.png" />
     <None Include="Resources\bomb_8.png" />

@@ -65,6 +65,30 @@ Namespace My
                 Me("Volume") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
+        Public Property UsingAnnouncer() As Short
+            Get
+                Return CType(Me("UsingAnnouncer"),Short)
+            End Get
+            Set
+                Me("UsingAnnouncer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("40")>  _
+        Public Property c4timer() As Integer
+            Get
+                Return CType(Me("c4timer"),Integer)
+            End Get
+            Set
+                Me("c4timer") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

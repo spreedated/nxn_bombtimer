@@ -60,44 +60,60 @@ Module Mod_Sound
         i.Start()
     End Sub
 
-    Public Sub PlayAnnouncer(ByVal announcer As Integer)
-        Select Case announcer
+    Public Sub PlayAnnouncer()
+        Select Case My.Settings.UsingAnnouncer
+            Case 0
+                'noop
             Case 1
-                _3D_Announcer.Start()
+                _3D_Announcer.PlayAudio()
             Case 2
-                Female_Voice.Start()
+                Female_Voice.PlayAudio()
             Case 3
-                UT99_Announcer.Start()
+                UT99_Announcer.PlayAudio()
             Case 4
-                Analogue_Clock.Start()
+                Analogue_Clock.PlayAudio()
+            Case 5
+                Heartbeat.PlayAudio()
             Case Else
                 'noop
         End Select
     End Sub
 
-    Public Sub PlayPreview(ByRef Announcer As AnnouncerSet)
+    Public Sub PlayPreview(ByRef Announcer As AnnouncerSet, ByVal Optional PlayTick As Short = 1337)
         Randomize()
         Dim rndNum As Random = New Random()
 
         Select Case Announcer
             Case 1
-                PlayMp3SoundResAsThread(_3D_Announcer.SoundArray(rndNum.Next(0, 11)))
+                If PlayTick = 1337 Then
+                    PlayMp3SoundResAsThread(_3D_Announcer.SoundArray(rndNum.Next(0, 11)))
+                Else
+                    PlayMp3SoundResAsThread(_3D_Announcer.SoundArray(PlayTick))
+                End If
             Case 2
-                PlayMp3SoundResAsThread(Female_Voice.SoundArray(rndNum.Next(0, 11)))
+                If PlayTick = 1337 Then
+                    PlayMp3SoundResAsThread(Female_Voice.SoundArray(rndNum.Next(0, 11)))
+                Else
+                    PlayMp3SoundResAsThread(Female_Voice.SoundArray(PlayTick))
+                End If
             Case 3
-                PlayMp3SoundResAsThread(UT99_Announcer.SoundArray(rndNum.Next(0, 11)))
+                If PlayTick = 1337 Then
+                    PlayMp3SoundResAsThread(UT99_Announcer.SoundArray(rndNum.Next(0, 11)))
+                Else
+                    PlayMp3SoundResAsThread(UT99_Announcer.SoundArray(PlayTick))
+                End If
             Case 4
                 PlayMp3SoundResAsThread(Analogue_Clock.SoundArray(0))
+            Case 5
+                PlayMp3SoundResAsThread(Heartbeat.SoundArray(0))
         End Select
     End Sub
 
 #Region "3D Announcer"
     Public Class _3D_Announcer
         Public Shared SoundArray = {My.Resources._3d_0, My.Resources._3d_1, My.Resources._3d_2, My.Resources._3d_3, My.Resources._3d_4, My.Resources._3d_5, My.Resources._3d_6, My.Resources._3d_7, My.Resources._3d_8, My.Resources._3d_9, My.Resources._3d_10}
-        Private Shared bombtime As Integer
-        Public Shared Sub Start()
-            bombtime = Mod_Csgsi.MyBombtime.Bombtime
-            Select Case bombtime
+        Public Shared Sub PlayAudio()
+            Select Case Mod_Csgsi.Bombtimer.RemainingSecondsToExplosion
                 Case 10
                     PlayMp3SoundResAsThread(My.Resources._3d_10)
                 Case 9
@@ -128,10 +144,8 @@ Module Mod_Sound
 #Region "Female Voice"
     Public Class Female_Voice
         Public Shared SoundArray = {My.Resources.female_0, My.Resources.female_1, My.Resources.female_2, My.Resources.female_3, My.Resources.female_4, My.Resources.female_5, My.Resources.female_6, My.Resources.female_7, My.Resources.female_8, My.Resources.female_9, My.Resources.female_10}
-        Private Shared bombtime As Integer
-        Public Shared Sub Start()
-            bombtime = Mod_Csgsi.MyBombtime.Bombtime
-            Select Case bombtime
+        Public Shared Sub PlayAudio()
+            Select Case Mod_Csgsi.Bombtimer.RemainingSecondsToExplosion
                 Case 10
                     PlayMp3SoundResAsThread(My.Resources.female_10)
                 Case 9
@@ -162,10 +176,8 @@ Module Mod_Sound
 #Region "UT99 Announcer"
     Public Class UT99_Announcer
         Public Shared SoundArray = {My.Resources.ut99_1, My.Resources.ut99_2, My.Resources.ut99_3, My.Resources.ut99_4, My.Resources.ut99_5, My.Resources.ut99_6, My.Resources.ut99_7, My.Resources.ut99_8, My.Resources.ut99_9, My.Resources.ut99_10}
-        Private Shared bombtime As Integer
-        Public Shared Sub Start()
-            bombtime = Mod_Csgsi.MyBombtime.Bombtime
-            Select Case bombtime
+        Public Shared Sub PlayAudio()
+            Select Case Mod_Csgsi.Bombtimer.RemainingSecondsToExplosion
                 Case 10
                     PlayMp3SoundResAsThread(My.Resources.ut99_10)
                 Case 9
@@ -194,9 +206,16 @@ Module Mod_Sound
 #Region "Analogue Clock"
     Public Class Analogue_Clock
         Public Shared SoundArray = {My.Resources.second_analogue}
-        Private Shared bombtime As Integer
-        Public Shared Sub Start()
-            bombtime = Mod_Csgsi.MyBombtime.Bombtime
+        Public Shared Sub PlayAudio()
+            PlayMp3SoundResAsThread(SoundArray(0))
+        End Sub
+    End Class
+#End Region
+
+#Region "Heartbeat"
+    Public Class Heartbeat
+        Public Shared SoundArray = {My.Resources.heartbeat}
+        Public Shared Sub PlayAudio()
             PlayMp3SoundResAsThread(SoundArray(0))
         End Sub
     End Class
