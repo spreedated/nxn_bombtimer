@@ -57,14 +57,26 @@ Public Class Frm_Main
 
 
 #Region "Stylez"
+    Private WithEvents InitializeBlockCSGSIstartButton As Timer = New Timer
+    Private Sub InitializeBlockCSGSIstartButton_Tick() Handles InitializeBlockCSGSIstartButton.Tick
+        Btn_Start.Enabled = True
+        InitializeBlockCSGSIstartButton.Stop()
+    End Sub
+
     Private Sub St_myState(ByVal state As Boolean)
         If state Then
             GroupBox1.Visible = False
             Me.Size = normal_window_size
             Btn_Options.Enabled = False
             Btn_Start.Text = "&Stop"
+            Btn_Start.Enabled = False
             Btn_Options.Text = "&Options »"
             Mod_Csgsi.GameState.StartCSGSI()
+            With InitializeBlockCSGSIstartButton
+                .Enabled = True
+                .Interval = 5000
+                .Start()
+            End With
         Else
             Btn_Options.Enabled = True
             Btn_Start.Text = "&Rock 'n' Roll"
@@ -72,6 +84,8 @@ Public Class Frm_Main
             ToolStripStatusLabel2.Text = "[+] Ready"
         End If
     End Sub
+
+
 #End Region
 
 #Region "Options - Timer"
