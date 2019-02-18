@@ -75,19 +75,14 @@ Module Mod_Csgsi
         'Debug.Print(gs.Map.Round)
 
         'On fresh plant
-        If gs.Round.Bomb.ToString.ToLower.Contains("planted") Then
+        If gs.Round.Bomb = Nodes.BombState.Planted Then
             isplanted = True
-        End If
-
-        'If defused or exploded, new round, etc.
-        If gs.Round.Bomb.ToString.ToLower.Contains("planted") = False Then
+        Else
+            'If defused or exploded, new round, etc.
             isplanted = False
         End If
 
-
         'Debug.Print(initialbombtime.ToString)
-
-
     End Sub
 
     Private Sub Set_gamevariables()
@@ -101,11 +96,6 @@ Module Mod_Csgsi
 
     End Sub
 #Region "Game Variables"
-    '# Vars
-    Private curr_timestamp As Integer = 0
-    Private round As Integer = -1
-    '# #####################
-
     'Options
     Private c4time As Integer = 40
     Private teh_announcer As Integer = 0

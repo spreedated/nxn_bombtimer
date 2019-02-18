@@ -1,4 +1,11 @@
-﻿Module Mod_Overlay
+﻿Imports System.Runtime.InteropServices
+Module Mod_Overlay
+    ' Rounded Edges
+    <DllImport("gdi32.dll")>
+    Public Function CreateRoundRectRgn(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer, ByVal cx As Integer, ByVal cy As Integer) As IntPtr
+    End Function
+    ' ###
+
     Private WithEvents Lbl_Time As New Label
     Public WithEvents Frm_Overlay As New Form
 
@@ -9,10 +16,10 @@
     Private mousex As Integer
     Private mousey As Integer
 
-    Private Sub Frm_Overlay_load() Handles frm_overlay.Load
-        dropFont()
+    Private Sub Frm_Overlay_load() Handles Frm_Overlay.Load
+        DropFont()
 
-        With frm_overlay
+        With Frm_Overlay
             .MinimumSize = New Size(0, 0)
             .AutoSize = False
             .ControlBox = False
@@ -28,7 +35,7 @@
             .TopMost = True
         End With
 
-        With lbl_time
+        With Lbl_Time
             .Name = "lbl_time"
             .AutoSize = False
             .Location = New Point(0, 0)
@@ -44,7 +51,10 @@
             .Text = "00"
         End With
 
-        frm_overlay.Controls.Add(lbl_time)
+        ' Rounded Edges
+        Frm_Overlay.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Frm_Overlay.Width, Frm_Overlay.Height, 15, 15))
+
+        Frm_Overlay.Controls.Add(Lbl_Time)
     End Sub
 
 #Region "Drag Window with Mouse"

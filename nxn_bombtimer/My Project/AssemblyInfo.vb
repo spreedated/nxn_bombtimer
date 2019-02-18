@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("neXn - C4 Bombtimer")>
+<Assembly: AssemblyTitle("nXn - C4 Bombtimer")>
 <Assembly: AssemblyDescription("CSGSI Overlay")>
-<Assembly: AssemblyCompany("2018 © neXn-Systems")>
-<Assembly: AssemblyProduct("neXn - C4 Bombtimer")>
-<Assembly: AssemblyCopyright("2018 © neXn-Systems")>
+<Assembly: AssemblyCompany("neXn-Systems")>
+<Assembly: AssemblyProduct("nXn - C4 Bombtimer")>
+<Assembly: AssemblyCopyright("2019 © neXn-Systems")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

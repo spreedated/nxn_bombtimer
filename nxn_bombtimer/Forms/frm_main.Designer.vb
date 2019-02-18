@@ -31,6 +31,9 @@ Partial Class Frm_Main
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Btn_Preview = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TrckBar_Volume = New System.Windows.Forms.TrackBar()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -39,24 +42,13 @@ Partial Class Frm_Main
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Chk_custom = New System.Windows.Forms.RadioButton()
         Me.chk_comp = New System.Windows.Forms.RadioButton()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Btn_ClearFields = New System.Windows.Forms.Button()
-        Me.Btn_RemoveLicence = New System.Windows.Forms.Button()
-        Me.Btn_Paste = New System.Windows.Forms.Button()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Btn_Register = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Btn_Debug = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.TrckBar_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Btn_Start
@@ -101,7 +93,7 @@ Partial Class Frm_Main
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 574)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 432)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(415, 22)
         Me.StatusStrip1.TabIndex = 4
@@ -128,17 +120,50 @@ Partial Class Frm_Main
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Btn_Preview)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.TrckBar_Volume)
         Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 280)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 218)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(391, 198)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Options"
         Me.GroupBox1.Visible = False
+        '
+        'Btn_Preview
+        '
+        Me.Btn_Preview.Location = New System.Drawing.Point(320, 169)
+        Me.Btn_Preview.Name = "Btn_Preview"
+        Me.Btn_Preview.Size = New System.Drawing.Size(65, 23)
+        Me.Btn_Preview.TabIndex = 8
+        Me.Btn_Preview.Text = "Preview"
+        Me.Btn_Preview.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(332, 42)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(42, 13)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Volume"
+        '
+        'TrckBar_Volume
+        '
+        Me.TrckBar_Volume.Location = New System.Drawing.Point(330, 58)
+        Me.TrckBar_Volume.Maximum = 100
+        Me.TrckBar_Volume.Minimum = 10
+        Me.TrckBar_Volume.Name = "TrckBar_Volume"
+        Me.TrckBar_Volume.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrckBar_Volume.Size = New System.Drawing.Size(45, 105)
+        Me.TrckBar_Volume.TabIndex = 10
+        Me.TrckBar_Volume.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.TrckBar_Volume.Value = 10
         '
         'CheckBox1
         '
@@ -226,139 +251,27 @@ Partial Class Frm_Main
         Me.chk_comp.Text = "Competitive (40 Seconds)"
         Me.chk_comp.UseVisualStyleBackColor = True
         '
-        'Label3
+        'Btn_Debug
         '
-        Me.Label3.Location = New System.Drawing.Point(218, 44)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(185, 84)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "### LICENCE ###"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Btn_ClearFields)
-        Me.GroupBox3.Controls.Add(Me.Btn_RemoveLicence)
-        Me.GroupBox3.Controls.Add(Me.Btn_Paste)
-        Me.GroupBox3.Controls.Add(Me.TextBox3)
-        Me.GroupBox3.Controls.Add(Me.Label6)
-        Me.GroupBox3.Controls.Add(Me.Label5)
-        Me.GroupBox3.Controls.Add(Me.TextBox2)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.Btn_Register)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 484)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(391, 76)
-        Me.GroupBox3.TabIndex = 7
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Register Licence"
-        '
-        'Btn_ClearFields
-        '
-        Me.Btn_ClearFields.Location = New System.Drawing.Point(62, 47)
-        Me.Btn_ClearFields.Name = "Btn_ClearFields"
-        Me.Btn_ClearFields.Size = New System.Drawing.Size(76, 21)
-        Me.Btn_ClearFields.TabIndex = 13
-        Me.Btn_ClearFields.Text = "Clear fields"
-        Me.Btn_ClearFields.UseVisualStyleBackColor = True
-        '
-        'Btn_RemoveLicence
-        '
-        Me.Btn_RemoveLicence.Location = New System.Drawing.Point(188, 47)
-        Me.Btn_RemoveLicence.Name = "Btn_RemoveLicence"
-        Me.Btn_RemoveLicence.Size = New System.Drawing.Size(97, 21)
-        Me.Btn_RemoveLicence.TabIndex = 12
-        Me.Btn_RemoveLicence.Text = "Remove licence"
-        Me.Btn_RemoveLicence.UseVisualStyleBackColor = True
-        '
-        'Btn_Paste
-        '
-        Me.Btn_Paste.Location = New System.Drawing.Point(6, 47)
-        Me.Btn_Paste.Name = "Btn_Paste"
-        Me.Btn_Paste.Size = New System.Drawing.Size(50, 21)
-        Me.Btn_Paste.TabIndex = 11
-        Me.Btn_Paste.Text = "&Paste"
-        Me.Btn_Paste.UseVisualStyleBackColor = True
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(235, 19)
-        Me.TextBox3.MaxLength = 6
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(50, 22)
-        Me.TextBox3.TabIndex = 9
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(223, 24)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(10, 13)
-        Me.Label6.TabIndex = 9
-        Me.Label6.Text = "-"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(139, 24)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(10, 13)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "-"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(151, 19)
-        Me.TextBox2.MaxLength = 9
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(70, 22)
-        Me.TextBox2.TabIndex = 8
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(87, 19)
-        Me.TextBox1.MaxLength = 6
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(50, 22)
-        Me.TextBox1.TabIndex = 7
-        '
-        'Btn_Register
-        '
-        Me.Btn_Register.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn_Register.Location = New System.Drawing.Point(291, 47)
-        Me.Btn_Register.Name = "Btn_Register"
-        Me.Btn_Register.Size = New System.Drawing.Size(81, 21)
-        Me.Btn_Register.TabIndex = 10
-        Me.Btn_Register.Text = "&Register"
-        Me.Btn_Register.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.Location = New System.Drawing.Point(12, 248)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(391, 29)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Options only available" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "in full Version"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Label4.Visible = False
+        Me.Btn_Debug.Location = New System.Drawing.Point(248, 94)
+        Me.Btn_Debug.Name = "Btn_Debug"
+        Me.Btn_Debug.Size = New System.Drawing.Size(123, 31)
+        Me.Btn_Debug.TabIndex = 7
+        Me.Btn_Debug.Text = "Debug"
+        Me.Btn_Debug.UseVisualStyleBackColor = True
         '
         'Frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(415, 596)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(415, 454)
+        Me.Controls.Add(Me.Btn_Debug)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Btn_Licence)
         Me.Controls.Add(Me.Btn_Options)
         Me.Controls.Add(Me.Btn_Start)
-        Me.Controls.Add(Me.Label4)
         Me.Name = "Frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_main"
@@ -367,11 +280,10 @@ Partial Class Frm_Main
         Me.StatusStrip1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.TrckBar_Volume, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -393,17 +305,9 @@ Partial Class Frm_Main
     Friend WithEvents chk_comp As RadioButton
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Btn_Register As Button
-    Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Btn_Paste As Button
-    Friend WithEvents Btn_RemoveLicence As Button
     Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Btn_ClearFields As Button
+    Friend WithEvents Btn_Debug As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents TrckBar_Volume As TrackBar
+    Friend WithEvents Btn_Preview As Button
 End Class

@@ -2,10 +2,10 @@
 
 Public Class Frm_Main
     Private normal_window_size As New Size(431, 269)
-    Private option_window_size As New Size(431, 635)
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private option_window_size As New Size(431, 493)
+    Private Sub Frm_Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With Me
-            .Text = Mod_Appprop.application_name
+            .Text = Mod_AppProperties.AppName()
             .FormBorderStyle = FormBorderStyle.FixedSingle
             .ShowIcon = True
             .ShowInTaskbar = True
@@ -14,33 +14,25 @@ Public Class Frm_Main
             .Icon = My.Resources.c4_icon_black
         End With
         ComboBox1.SelectedIndex = 1
-        Mod_Licence.check_licence_on_startup()
+        TrckBar_Volume.Value = My.Settings.Volume * 100
     End Sub
 
     Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
-        If sender.text.ToString.ToLower.Contains("rock") Then
+        Dim i As Button = sender
+        If i.Text.ToString.ToLower.Contains("rock") Then
             St_myState(True)
         Else
             St_myState(False)
         End If
     End Sub
 
-    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    Private Sub Frm_Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Mod_Csgsi.StopCSGSI()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Btn_Options.Click
+    Private Sub Btn_Options_Click(sender As Object, e As EventArgs) Handles Btn_Options.Click
         If sender.text.ToString.ToLower.Contains("»") Then
             Me.Size = option_window_size
-            '# LICENCE
-            If Not is_licensed Then
-                GroupBox1.Enabled = False
-                Label4.Visible = True
-            Else
-                GroupBox1.Enabled = True
-                Label4.Visible = False
-            End If
-            '# ###
             GroupBox1.Visible = True
             sender.text = sender.text.ToString.Replace("»", "«")
         Else
@@ -49,6 +41,7 @@ Public Class Frm_Main
             sender.text = sender.text.ToString.Replace("«", "»")
         End If
     End Sub
+
 #Region "Stylez"
     Private Sub St_myState(ByVal state As Boolean)
         If state Then
@@ -84,75 +77,6 @@ Public Class Frm_Main
     End Sub
 #End Region
 
-#Region "Licence GroupBox"
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Btn_Register.Click
-        If TextBox1.Text.Length = 6 And TextBox2.Text.Length = 9 And TextBox3.Text.Length = 6 And TextBox3.Text.ToLower.StartsWith("nxn") = True Then
-            My.Settings.licence = TextBox1.Text & "-" & TextBox2.Text & "-" & TextBox3.Text
-            My.Settings.Save()
-            check_licence_on_startup()
-            Btn_Options.PerformClick()
-        Else
-            MsgBox("Licence not valid", MsgBoxStyle.Information, application_name)
-        End If
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Btn_Paste.Click
-        Try
-            Dim i = My.Computer.Clipboard.GetText
-            If i.Length = 23 And i.ToLower.Contains("-nxn") Then
-                Dim d() As String = i.Split("-")
-                TextBox1.Text = d(0)
-                TextBox2.Text = d(1)
-                TextBox3.Text = d(2)
-            End If
-        Catch ex As Exception
-            'noop
-        End Try
-    End Sub
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Btn_RemoveLicence.Click
-        Dim i As MsgBoxResult = MsgBox("Delete licence and reset to TRIAL MODE?", MsgBoxStyle.OkCancel, application_name)
-
-        If i = MsgBoxResult.Ok Then
-            Dim d As MsgBoxResult = MsgBox("Are you sure?!", MsgBoxStyle.YesNo, application_name)
-            If d = MsgBoxResult.Yes Then
-                My.Settings.licence = ""
-                My.Settings.Save()
-                Mod_Licence.check_licence_on_startup()
-                TextBox1.Clear()
-                TextBox2.Clear()
-                TextBox3.Clear()
-                Btn_RemoveLicence.Enabled = False
-                Btn_Register.Enabled = True
-                Btn_ClearFields.Enabled = True
-                Btn_Paste.Enabled = True
-            Else
-                MsgBox("Nothing changed", MsgBoxStyle.Information, application_name)
-            End If
-        Else
-            MsgBox("Nothing changed", MsgBoxStyle.Information, application_name)
-        End If
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        If TextBox1.Text.Length = TextBox1.MaxLength Then
-            TextBox2.Select()
-        End If
-    End Sub
-
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-        If TextBox2.Text.Length = TextBox2.MaxLength Then
-            TextBox3.Select()
-        End If
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Btn_ClearFields.Click
-        Dim textBoxes As Array = {TextBox1, TextBox2, TextBox3}
-        For Each tBox As TextBox In textBoxes
-            tBox.Clear()
-        Next
-    End Sub
-#End Region
 
 #Region "Auto-Listen"
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
@@ -193,48 +117,15 @@ Public Class Frm_Main
     End Sub
 #End Region
 
-#If DEBUG Then
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        GenerateLicence()
-    End Sub
-
-
-    Private licenceArray As String = "abcdefghijklmnopqrstuvwxyz0123456789"
-    Private Sub GenerateLicence()
-        Randomize()
-        Dim rnd As New Random
-        Dim output As String = Nothing
-        Dim i As Short = 0
-
-        Do
-            Dim rnd_num = rnd.Next(0, 35)
-
-            output += licenceArray(rnd_num)
-
-            i += 1
-        Loop While i < 21
-
-        output = output.Insert(6, "-")
-        output = output.Insert(16, "-")
-        Dim filename = output.ToUpper
-        filename = filename.Insert(filename.LastIndexOf("-") + 1, "NXN")
-        filename = filename.Substring(0, 23)
-
-        Dim issuedTo As String = "PROMO CODE"
-        Dim issueDate As UInt64 = CLng(DateTime.Now.Subtract(New DateTime(1970, 1, 1)).TotalSeconds)
-        Dim expirationDate As UInt64 = CLng(DateTime.Now.AddMonths(1).Subtract(New DateTime(1970, 1, 1)).TotalSeconds)
-
-        Dim path As String = "C:\Users\SpReeD\Documents\Visual Studio 2017\Projects\nxn_bombtimer\license\" & filename & ".nxn"
-
-        Dim z = System.IO.File.Create(path)
-        z.Close()
-        System.IO.File.WriteAllText(path, issuedTo & vbCrLf & issueDate & vbCrLf & expirationDate)
-
+    Private Sub Btn_Debug_Click(sender As Object, e As EventArgs) Handles Btn_Debug.Click
 
     End Sub
+    Private Sub TrckBar_Volume_Scroll(sender As Object, e As EventArgs) Handles TrckBar_Volume.Scroll
+        My.Settings.Volume = CSng(TrckBar_Volume.Value / 100)
+        My.Settings.Save()
+    End Sub
 
-    Private Function ConvertTimestamp(ByVal timestamp As Double) As DateTime
-        Return New DateTime(1970, 1, 1, 0, 0, 0).AddSeconds(timestamp)
-    End Function
-#End If
+    Private Sub Btn_Preview_Click(sender As Object, e As EventArgs) Handles Btn_Preview.Click
+        PlayPreview(ComboBox1.SelectedIndex)
+    End Sub
 End Class
