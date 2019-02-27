@@ -22,6 +22,7 @@ Partial Class Frm_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Btn_Start = New System.Windows.Forms.Button()
         Me.Btn_Options = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -55,6 +56,12 @@ Partial Class Frm_Main
         Me.Chk_comp = New System.Windows.Forms.RadioButton()
         Me.Btn_Debug = New System.Windows.Forms.Button()
         Me.Btn_Debug1 = New System.Windows.Forms.Button()
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -62,6 +69,7 @@ Partial Class Frm_Main
         CType(Me.TrckBar_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Btn_Start
@@ -76,7 +84,7 @@ Partial Class Frm_Main
         '
         'Btn_Options
         '
-        Me.Btn_Options.Location = New System.Drawing.Point(248, 165)
+        Me.Btn_Options.Location = New System.Drawing.Point(248, 144)
         Me.Btn_Options.Name = "Btn_Options"
         Me.Btn_Options.Size = New System.Drawing.Size(123, 31)
         Me.Btn_Options.TabIndex = 1
@@ -310,7 +318,7 @@ Partial Class Frm_Main
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Enabled = False
-        Me.CheckBox1.Location = New System.Drawing.Point(202, 38)
+        Me.CheckBox1.Location = New System.Drawing.Point(193, 28)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(128, 17)
         Me.CheckBox1.TabIndex = 9
@@ -393,11 +401,50 @@ Partial Class Frm_Main
         Me.Btn_Debug1.UseVisualStyleBackColor = True
         Me.Btn_Debug1.Visible = False
         '
+        'NotifyIcon1
+        '
+        Me.NotifyIcon1.Text = "NotifyIcon1"
+        Me.NotifyIcon1.Visible = True
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(248, 181)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(123, 31)
+        Me.Button12.TabIndex = 9
+        Me.Button12.Text = "&Close"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripSeparator1, Me.ToolStripMenuItem2})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 76)
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem1.Text = "Hide"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem2.Text = "Exit"
+        '
         'Frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(415, 496)
+        Me.Controls.Add(Me.Button12)
         Me.Controls.Add(Me.Btn_Debug1)
         Me.Controls.Add(Me.Btn_Debug)
         Me.Controls.Add(Me.GroupBox1)
@@ -405,6 +452,7 @@ Partial Class Frm_Main
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Btn_Options)
         Me.Controls.Add(Me.Btn_Start)
+        Me.MaximizeBox = False
         Me.Name = "Frm_Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_main"
@@ -419,6 +467,7 @@ Partial Class Frm_Main
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -457,4 +506,10 @@ Partial Class Frm_Main
     Friend WithEvents Button1 As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents TrckBar_Volume As TrackBar
+    Friend WithEvents NotifyIcon1 As NotifyIcon
+    Friend WithEvents Button12 As Button
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
 End Class

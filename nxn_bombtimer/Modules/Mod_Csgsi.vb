@@ -83,8 +83,6 @@ Module Mod_Csgsi
         End Sub
     End Class
 
-
-
     Public Class Bombtimer
 #Region "Properties"
         Private Shared _bombHasBeenPlanted As Boolean = False
@@ -139,7 +137,6 @@ Module Mod_Csgsi
         Private Shared Sub CountDown_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles CountDown.Tick
             Frm_Overlay.Lbl_Time.Text = RemainingSecondsToExplosion
 
-
             If RemainingSecondsToExplosion >= 11 Then
                 Frm_Overlay.Lbl_Time.ForeColor = Color.White
             End If
@@ -170,7 +167,10 @@ Module Mod_Csgsi
                 .Start()
             End With
             RemainingSecondsToExplosion = My.Settings.c4timer - 1
-            Frm_Overlay.Lbl_Time.Text = My.Settings.c4timer.ToString
+            With Frm_Overlay.Lbl_Time
+                .Text = My.Settings.c4timer.ToString
+                .ForeColor = Color.White
+            End With
             Frm_Overlay.Show()
         End Sub
         Private Shared Sub ResetTimer()

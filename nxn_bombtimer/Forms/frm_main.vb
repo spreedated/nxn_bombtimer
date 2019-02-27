@@ -16,6 +16,12 @@ Public Class Frm_Main
         ComboBox1.SelectedIndex = My.Settings.UsingAnnouncer
         TrckBar_Volume.Value = My.Settings.Volume * 100
 
+        With NotifyIcon1
+            .Text = Mod_AppProperties.AppName()
+            .Icon = My.Resources.c4_icon_white
+            .ContextMenuStrip = ContextMenuStrip1
+        End With
+
 #If DEBUG Then
         Btn_Debug.Visible = True
         Btn_Debug1.Visible = True
@@ -34,6 +40,7 @@ Public Class Frm_Main
 
     Private Sub Frm_Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Mod_Csgsi.GameState.StopCSGSI()
+        NotifyIcon1.Dispose()
     End Sub
 
     Private Sub Btn_Options_Click(sender As Object, e As EventArgs) Handles Btn_Options.Click
@@ -54,7 +61,9 @@ Public Class Frm_Main
     Private Sub Btn_Debug1_Click(sender As Object, e As EventArgs) Handles Btn_Debug1.Click
         Bombtimer.BombHasBeenPlanted = False
     End Sub
-
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        Me.Close()
+    End Sub
 
 #Region "Stylez"
     Private WithEvents InitializeBlockCSGSIstartButton As Timer = New Timer
@@ -66,7 +75,11 @@ Public Class Frm_Main
     Private Sub St_myState(ByVal state As Boolean)
         If state Then
             GroupBox1.Visible = False
-            Me.Size = normal_window_size
+            With Me
+                .Size = normal_window_size
+                .Hide()
+                .ShowInTaskbar = False
+            End With
             Btn_Options.Enabled = False
             Btn_Start.Text = "&Stop"
             Btn_Start.Enabled = False
@@ -82,6 +95,10 @@ Public Class Frm_Main
             Btn_Start.Text = "&Rock 'n' Roll"
             Mod_Csgsi.GameState.StopCSGSI()
             ToolStripStatusLabel2.Text = "[+] Ready"
+            With Me
+                .Show()
+                .ShowInTaskbar = True
+            End With
         End If
     End Sub
 
@@ -210,6 +227,22 @@ Public Class Frm_Main
                 Btn_Start.PerformClick()
             End If
         End If
+    End Sub
+#End Region
+
+#Region "NotifyIcon Context Menu Strip"
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        If Me.WindowState = FormWindowState.Minimized Then
+            Me.WindowState = FormWindowState.Normal
+            ToolStripMenuItem1.Text = "Hide"
+        Else
+            Me.WindowState = FormWindowState.Minimized
+            ToolStripMenuItem1.Text = "Show"
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        Me.Close()
     End Sub
 #End Region
 
