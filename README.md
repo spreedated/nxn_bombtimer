@@ -8,8 +8,13 @@ is a tool that uses the Valve **Gamestate Integration** technology to display
 an overlay on your screen that shows the current state/time of the bombs timer.
 
 **Note:** Since this is no memory hack or a hack in any way and uses Valve own technology
-to communicate, on cannot be VAC banned. Theoretically. I DO NOT give a 100% guarantee!
+to communicate, one cannot be VAC banned. Theoretically. I DO NOT give a 100% guarantee!
 Use at own risk!
+
+**Note:** This kind of tool gives you somehow an unfair advantage and therefore Valve took action.
+Valve added a random delay to the information stream on when the bomb has been planted,
+this delay ranges from 0 to up to 2 seconds (my experience). So, note, the timer is sometimes
+up to two seconds off. This is NOT a bug(!) and not fixable without VAC security violations.
 
 ### Enjoying this?
 Just star the repo or make a donation.
@@ -28,4 +33,4 @@ Your help is valuable since this is a hobby project for all of us: we do develop
 Pull requests are very welcome.
 
 ### Copyrights
-nXn-Bomtimer was initially written by **Markus Karl Wackermann**. 
+nXn-Bomtimer was initially written by **Markus Karl Wackermann**.
